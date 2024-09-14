@@ -1,24 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+// src/App.js
+
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import ChinaMap from './components/ChinaMap';
+import ProvinceMap from './components/ProvinceMap';  // 动态加载省份地图的组件
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<ChinaMap />} />  {/* 显示中国地图 */}
+        <Route path="/province" element={<ProvinceMap />} />  {/* 根据查询参数显示省份地图 */}
+      </Routes>
+    </Router>
   );
 }
 

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Province Map</title>
+</head>
+<body>
+  <div id="province-map" style="height: 100vh;"></div>
+  <script type="module">
+    import('/static/js/bundle.js').then(module => {
+      const { renderProvinceMap } = module;
+      const urlParams = new URLSearchParams(window.location.search);
+      const provinceName = decodeURIComponent(urlParams.get('name'));
+      renderProvinceMap(provinceName);
+    }).catch(err => {
+      console.error('Failed to load module:', err);
+    });
+  </script>
+</body>
+</html>
