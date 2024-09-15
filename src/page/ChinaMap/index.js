@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactECharts from 'echarts-for-react';
 import * as echarts from 'echarts/core';
-import { china } from '../../utils/map/china';  // 导入中国地图
+import { china } from '../../assets/map/china';  // 导入中国地图
 import { useNavigate, createSearchParams } from 'react-router-dom';
 
 // 注册中国地图

@@ -3,7 +3,7 @@ import React from 'react';
 import ReactECharts from 'echarts-for-react';
 import * as echarts from 'echarts/core';
 import { useLocation } from 'react-router-dom';
-import { provinces } from '../../utils/map/provinces';  // 导入所有省份的地图
+import { provinces } from '../../assets/map/provinces';  // 导入所有省份的地图
 
 // 获取查询参数
 function useQuery() {
