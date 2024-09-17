@@ -3,6 +3,10 @@ import ReactECharts from 'echarts-for-react';
 import * as echarts from 'echarts/core';
 import { china } from '../../assets/map/china';  // 导入中国地图
 import { useNavigate, createSearchParams } from 'react-router-dom';
+import bgImage from '../../assets/images/bg01.png'; // 更新路径
+import headerImage from '../../assets/images/header.png'; // 更新路径
+import TitleHeader from '../../components/TitleHeader';
+import BackgroundWrapper from '../../components/BackgroundWrapper';
 
 // 注册中国地图
 echarts.registerMap('china', china, {});
@@ -31,11 +35,16 @@ const ChinaMap = () => {
   };
 
   return (
-    <ReactECharts
-      style={{ height: '600px' }}
-      option={chinaMapOption}
-      onEvents={{ click: onChartClick }}  // 绑定点击事件
-    />
+    <BackgroundWrapper bgImage={bgImage}>
+      {/* 标题居中 */}
+      <TitleHeader Name="全国" headerImage={headerImage} />
+
+      <ReactECharts
+        style={{ height: '600px' }}
+        option={chinaMapOption}
+        onEvents={{ click: onChartClick }}  // 绑定点击事件
+      />
+    </BackgroundWrapper>
   );
 };
 

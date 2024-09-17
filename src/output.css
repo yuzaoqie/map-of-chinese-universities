@@ -578,10 +578,6 @@ video {
   display: table;
 }
 
-.h-1\/2 {
-  height: 50%;
-}
-
 .min-h-screen {
   min-height: 100vh;
 }
@@ -636,19 +632,9 @@ video {
   padding: 1rem;
 }
 
-.px-4 {
-  padding-left: 1rem;
-  padding-right: 1rem;
-}
-
 .px-6 {
   padding-left: 1.5rem;
   padding-right: 1.5rem;
-}
-
-.py-2 {
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
 }
 
 .py-2\.5 {
@@ -686,11 +672,6 @@ video {
 .text-sky-300 {
   --tw-text-opacity: 1;
   color: rgb(125 211 252 / var(--tw-text-opacity));
-}
-
-.text-textTable-white {
-  --tw-text-opacity: 1;
-  color: rgb(197 192 184 / var(--tw-text-opacity));
 }
 
 .table-text {

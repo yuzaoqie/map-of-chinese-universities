@@ -1,12 +1,13 @@
 import React from 'react';
-import '../../output.css'; // 更新路径
+import '../output.css';
 
 // 测试用的数据，未来将会从后端获取
 const UniversityTable = () => {
     const data = [
-      { id: 1, name: '上海应用技术大学', type: '公办', link: 'https://adm.sit.edu.cn/'},
-      { id: 2, name: '华东理工大学', type: '公办', link: 'https://zsb.ecust.edu.cn/'},
-      { id: 3, name: '上海交通大学', type: '公办', link: 'https://zsb.sjtu.edu.cn/web/jdzsb/3810001.htm'},
+      // 985,211,双一流,本科
+      { id: 1, name: '上海应用技术大学', type: '地方公办', level: '本科', link: 'https://adm.sit.edu.cn/', Category:'理工'},
+      { id: 2, name: '华东理工大学', type: '教育部直属', level: '211', link: 'https://zsb.ecust.edu.cn/', Category:'理工'},
+      { id: 3, name: '上海交通大学', type: '教育部直属', level: '985', link: 'https://zsb.sjtu.edu.cn/web/jdzsb/3810001.htm', Category:'综合'},
     ];
 
   return (
@@ -19,6 +20,8 @@ const UniversityTable = () => {
             {/* {本科，专科} */}
             <th className="table-text">本科院校名称</th>
             <th className="table-text">类型</th>
+            <th className="table-text">办学层次</th>
+            <th className="table-text">类别</th>
           </tr>
         </thead>
         <tbody>
@@ -30,6 +33,8 @@ const UniversityTable = () => {
                 <a href={row.link} target="_blank" className="block">{row.name}</a>
               </td>
               <td className="table-text">{row.type}</td>
+              <td className="table-text">{row.level}</td>
+              <td className="table-text">{row.Category}</td>
             </tr>
           ))}
         </tbody>
@@ -38,4 +43,5 @@ const UniversityTable = () => {
   );
 
 };
-  export default UniversityTable;
+
+export default UniversityTable;
