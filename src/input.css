@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.table-text {
+    @apply border border-lineTable-blue px-4 py-2 text-textTable-white;
+}

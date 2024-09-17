@@ -5,7 +5,11 @@ module.exports = {
   ],
   theme: {
     extend: {
-
+      colors: {
+        'lineTable-blue': '#0b77cf',
+        'bgTable-blue': '#104e7c',
+        'textTable-white': '#c5c0b8',
+      },
     },
   },
   plugins: [],

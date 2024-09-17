@@ -4,10 +4,11 @@ import ReactECharts from 'echarts-for-react';
 import * as echarts from 'echarts/core';
 import { useLocation } from 'react-router-dom';
 import { provinces } from '../../assets/map/provinces';  // 导入所有省份的地图
-import bg01Image from '../../assets/images/bg01.png'; // 更新路径
+import bgImage from '../../assets/images/bg06.png'; // 更新路径
 import headerImage from '../../assets/images/header.png'; // 更新路径
 import panelImage from '../../assets/images/panel.png'; // 更新路径
 import '../../output.css'; // 更新路径
+import UniversityTable from "./UniversityTable";
 
 // 获取查询参数
 function useQuery() {
@@ -47,7 +48,7 @@ const ProvinceMap = () => {
     <div 
       className="min-h-screen flex flex-col"
       style={{ 
-        backgroundImage: `url(${bg01Image})`,
+        backgroundImage: `url(${bgImage})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat', // 防止图片重复
@@ -121,8 +122,8 @@ const ProvinceMap = () => {
               backgroundSize: '100% 100%', // 背景图片随着容器大小变化backgroundSize: '100% 100%',
             }}
             >
-            <h3 className="text-lg font-bold mb-2">{provinceName} 表格数据1</h3>
-            <p className="text-gray-700">这里展示 {provinceName} 的相关数据。</p>
+            {/* TODO 数据修改 */}
+            <UniversityTable />
           </div>
           {/* 专科院校 */}
           <div 
