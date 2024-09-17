@@ -1,10 +1,12 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    "./src/**/*.{html,js,jsx,ts,tsx}",  // 让 Tailwind 处理 src 目录中的所有文件
+    './src/**/*.{html,js,jsx,ts,tsx}', // 确保包含了所有需要的文件路径
   ],
   theme: {
-    extend: {},
+    extend: {
+
+    },
   },
   plugins: [],
-}
+};
