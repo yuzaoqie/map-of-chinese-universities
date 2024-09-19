@@ -13,7 +13,7 @@ import TitleHeader from "../../components/TitleHeader"; // 标题组件
 import BackgroundWrapper from "../../components/BackgroundWrapper"; // 背景组件
 import Panel from "../../components/Panel"; // 右侧数据面板组件
 import MapPanel from "../../components/MapPanel"; // 左侧地图面板组件
-
+import NotFound from "../NotFound"; // 404 页面
 
 // 获取查询参数
 function useQuery() {
@@ -31,7 +31,7 @@ const ProvinceMap = () => {
   console.log(provinceName, provinceMap);
 
   if (!provinceMap) {
-    return <div>省份地图数据未找到。</div>;
+    return <NotFound />;
   }
 
   // 注册省份地图
@@ -52,10 +52,10 @@ const ProvinceMap = () => {
   return (
     <BackgroundWrapper bgImage={bgImage}>
       {/* 标题居中 */}
-      <TitleHeader Name={provinceName} headerImage={headerImage} />
+      <TitleHeader headerName={`${provinceName}高校分布情况`} headerImage={headerImage} />
 
       {/* 左右布局 */}
-      <div class="flex mt-4 min-h-screen">
+      <div class="flex m-4 min-h-screen">
         
         {/* 左侧数据展示*/}
         <MapPanel
@@ -65,14 +65,14 @@ const ProvinceMap = () => {
         />
         
         {/* 右侧数据展示 */}
-        <div className="w-1/2 flex flex-col">
+        <div className="ml-4 w-1/2 flex flex-col">
           {/* 本科院校 */}
           <Panel panelImage={panelImage} className="flex-1">
             {/* TODO 数据修改 */}
             <UniversityTable />
           </Panel>
           {/* 专科院校 */}
-          <Panel panelImage={panelImage} className="mt-2 flex-1">
+          <Panel panelImage={panelImage} className="mt-4 flex-1">
             {/* TODO 数据修改 */}
             <UniversityTable />
           </Panel>

@@ -1,5 +1,6 @@
 import React from 'react';
 import '../output.css';
+import { useLocation } from 'react-router-dom';
 
 // 测试用的数据，未来将会从后端获取
 const UniversityTable = () => {
@@ -9,6 +10,13 @@ const UniversityTable = () => {
       { id: 2, name: '华东理工大学', type: '教育部直属', level: '211', link: 'https://zsb.ecust.edu.cn/', Category:'理工'},
       { id: 3, name: '上海交通大学', type: '教育部直属', level: '985', link: 'https://zsb.sjtu.edu.cn/web/jdzsb/3810001.htm', Category:'综合'},
     ];
+
+    const handleRowClick = (universityName) => {
+      const url = `/universityInfo?name=${encodeURIComponent(universityName)}`;
+
+      window.open(url, '_blank'); // 在新标签页中打开
+  };
+
 
   return (
     <div className="overflow-x-auto p-4 ">
@@ -26,12 +34,9 @@ const UniversityTable = () => {
         </thead>
         <tbody>
           {data.map((row) => (
-            <tr key={row.id} className="text-center">
+            <tr key={row.id} className="text-center" onClick={() => handleRowClick(row.name)}>
               <td className="table-text">{row.id}</td>
-              <td 
-                className="table-text">
-                <a href={row.link} target="_blank" className="block">{row.name}</a>
-              </td>
+              <td className="table-text">{row.name}</td>
               <td className="table-text">{row.type}</td>
               <td className="table-text">{row.level}</td>
               <td className="table-text">{row.Category}</td>

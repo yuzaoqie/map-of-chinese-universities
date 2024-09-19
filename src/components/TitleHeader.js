@@ -1,7 +1,7 @@
 import React from 'react';
 
 // 可复用的标题组件
-function TitleHeader({ Name, headerImage }) {
+function TitleHeader({ headerName, headerImage }) {
   return (
     <h1 
       className="text-sky-300 text-center text-2xl font-bold uppercase py-2.5 px-6"
@@ -12,7 +12,7 @@ function TitleHeader({ Name, headerImage }) {
         backgroundPosition: 'center',
       }}
     >
-      {Name}高校分布情况
+      {headerName}
     </h1>
   );
 }

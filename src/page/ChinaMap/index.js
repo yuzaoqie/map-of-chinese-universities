@@ -12,7 +12,6 @@ import BackgroundWrapper from '../../components/BackgroundWrapper';
 echarts.registerMap('china', china, {});
 
 const ChinaMap = () => {
-  const navigate = useNavigate();
 
   const onChartClick = (params) => {
     const provinceName = params.name;  // 获取点击的省份名称
@@ -37,8 +36,9 @@ const ChinaMap = () => {
   return (
     <BackgroundWrapper bgImage={bgImage}>
       {/* 标题居中 */}
-      <TitleHeader Name="全国" headerImage={headerImage} />
+      <TitleHeader headerName="全国高校分布" headerImage={headerImage} />
 
+      {/* 地图展示 */}
       <ReactECharts
         style={{ height: '600px' }}
         option={chinaMapOption}

@@ -5,7 +5,7 @@ import ReactECharts from 'echarts-for-react';
 const MapPanel = ({ panelImage, provinceMapOption, provinceName }) => {
   return (
     // 左侧数据展示 左右有间隔：mx-4
-    <div className="w-1/2 flex flex-col mx-4">
+    <div className="w-1/2 flex flex-col">
       <div
         className="flex-1"
         style={{
