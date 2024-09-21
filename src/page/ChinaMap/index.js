@@ -15,7 +15,8 @@ const ChinaMap = () => {
 
   const onChartClick = (params) => {
     const provinceName = params.name;  // 获取点击的省份名称
-    const url = `/provinceMap?name=${encodeURIComponent(provinceName)}`;
+    console.log(provinceName); // 打印省份名称以确认
+    const url = `/provinceMap/${encodeURIComponent(provinceName)}`;
     
     // 在新标签页中打开 province 页面
     window.open(url, '_blank');

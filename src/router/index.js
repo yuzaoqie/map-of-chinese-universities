@@ -10,11 +10,11 @@ const router =  createBrowserRouter([
         element: <ChinaMap />
     },
     {
-        path: "/provinceMap",
+        path: "/provinceMap/:name",
         element: <Province />
     },
     {
-        path: '/universityInfo',
+        path: '/universityInfo/:name',
         element: <UniversityInfo />
     },
     {

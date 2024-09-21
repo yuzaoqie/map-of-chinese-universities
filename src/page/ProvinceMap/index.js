@@ -2,7 +2,6 @@ import { useSearchParams } from "react-router-dom";
 import React from 'react';
 import ReactECharts from 'echarts-for-react';
 import * as echarts from 'echarts/core';
-import { useLocation } from 'react-router-dom';
 import { provinces } from '../../assets/map/provinces';  // 导入所有省份的地图
 import bgImage from '../../assets/images/bg06.png'; // 背景图片
 import headerImage from '../../assets/images/header.png'; // 标题图片
@@ -14,15 +13,10 @@ import BackgroundWrapper from "../../components/BackgroundWrapper"; // 背景组
 import Panel from "../../components/Panel"; // 右侧数据面板组件
 import MapPanel from "../../components/MapPanel"; // 左侧地图面板组件
 import NotFound from "../NotFound"; // 404 页面
-
-// 获取查询参数
-function useQuery() {
-  return new URLSearchParams(useLocation().search);
-}
+import { useParams } from 'react-router-dom'; // 确保导入 useParams
 
 const ProvinceMap = () => {
-  const query = useQuery();
-  const provinceName = query.get('name');  // 获取URL中的省份名称
+  const { name: provinceName } = useParams();  // 从路由参数中获取省份名称
 
   // 从 provinces 中获取对应的地图数据
   const provinceMap = provinces[provinceName];

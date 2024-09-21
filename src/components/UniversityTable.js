@@ -12,7 +12,7 @@ const UniversityTable = () => {
     ];
 
     const handleRowClick = (universityName) => {
-      const url = `/universityInfo?name=${encodeURIComponent(universityName)}`;
+      const url = `/universityInfo/${encodeURIComponent(universityName)}`;
 
       window.open(url, '_blank'); // 在新标签页中打开
   };
