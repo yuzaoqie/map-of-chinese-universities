@@ -14,6 +14,7 @@ import Panel from "../../components/Panel"; // 右侧数据面板组件
 import MapPanel from "../../components/MapPanel"; // 左侧地图面板组件
 import NotFound from "../NotFound"; // 404 页面
 import { useParams } from 'react-router-dom'; // 确保导入 useParams
+import JuniorCollegeTable from "../../components/JuniorCollegeTable"; // 专科院校表格
 
 const ProvinceMap = () => {
   const { name: provinceName } = useParams();  // 从路由参数中获取省份名称
@@ -63,12 +64,12 @@ const ProvinceMap = () => {
           {/* 本科院校 */}
           <Panel panelImage={panelImage} className="flex-1">
             {/* TODO 数据修改 */}
-            <UniversityTable />
+            <UniversityTable provinceName={provinceName}/>
           </Panel>
           {/* 专科院校 */}
           <Panel panelImage={panelImage} className="mt-4 flex-1">
             {/* TODO 数据修改 */}
-            <UniversityTable />
+            <JuniorCollegeTable provinceName={provinceName}/>
           </Panel>
         </div>
       </div>
