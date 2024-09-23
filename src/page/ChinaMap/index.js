@@ -26,9 +26,18 @@ const ChinaMap = () => {
     series: [{
       type: 'map',
       map: 'china',
-      emphasis: {
-        itemStyle: {
-          areaColor: '#FF8C00',
+      label: {
+        show: true,  // 显示省份名称
+        color: '#FFFFFF',  // 设置文字颜色
+        fontSize: 14,   // 设置文字大小
+      },
+      itemStyle: {
+        normal: {
+          areaColor: '#00467f',  // 设置省份区域的默认颜色
+          borderColor: '#FFFFFF',   // 设置省份边界的颜色
+        },
+        emphasis: {
+          areaColor: '#01beff',  // 设置鼠标悬浮时区域的颜色
         },
       },
     }],
@@ -41,7 +50,7 @@ const ChinaMap = () => {
 
       {/* 地图展示 */}
       <ReactECharts
-        style={{ height: '600px' }}
+        style={{ height: '1200px' }}
         option={chinaMapOption}
         onEvents={{ click: onChartClick }}  // 绑定点击事件
       />

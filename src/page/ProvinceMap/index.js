@@ -36,9 +36,18 @@ const ProvinceMap = () => {
     series: [{
       type: 'map',
       map: provinceName,
-      emphasis: {
-        itemStyle: {
-          areaColor: '#FF8C00',
+      label: {
+        show: true,  // 显示地区名称
+        color: '#FFFFFF',  // 设置文字颜色
+        fontSize: 12,   // 设置文字大小
+      },
+      itemStyle: {
+        normal: {
+          areaColor: '#00467f',  // 设置区域的默认颜色
+          borderColor: '#FFFFFF',   // 设置边界的颜色
+        },
+        emphasis: {
+          areaColor: '#01beff',  // 设置鼠标悬浮时区域的颜色
         },
       },
     }],
