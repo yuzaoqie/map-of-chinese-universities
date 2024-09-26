@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Panel({ panelImage, className, children }) {
+const Panel = ({ panelImage, className, children }) => {
   return (
     <div 
       className={`bg-cover bg-center ${className}`} // 使用传入的 className

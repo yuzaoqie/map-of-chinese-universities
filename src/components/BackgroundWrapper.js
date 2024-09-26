@@ -1,7 +1,7 @@
 import React from 'react';
 
 // 定义复用的背景包装组件
-function BackgroundWrapper({ bgImage, children }) {
+const BackgroundWrapper = ({ bgImage, children }) => {
   return (
     <div 
       className="min-h-screen flex flex-col"
