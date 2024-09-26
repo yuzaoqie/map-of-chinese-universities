@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
-// 
-const UniversityTable = ({ provinceName }) => {
+// 院校表格组件
+const UniversityTable = ({ provinceName, level }) => {
   const [universities, setUniversities] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -10,7 +10,9 @@ const UniversityTable = ({ provinceName }) => {
     const fetchUniversities = async () => {
       try {
         const response = await axios.get(`http://localhost:8080/api/universitiesByProvinceMap/${encodeURIComponent(provinceName)}`);
-        setUniversities(response.data);
+        // 过滤出符合当前 level 的院校
+        const filteredUniversities = response.data.filter(university => university.level === level);
+        setUniversities(filteredUniversities);
       } catch (error) {
         console.error('Error fetching universities:', error);
       } finally {
@@ -19,7 +21,7 @@ const UniversityTable = ({ provinceName }) => {
     };
 
     fetchUniversities();
-  }, [provinceName]);
+  }, [provinceName, level]);
 
   // 点击表格行时，跳转到对应的大学详情页
   const handleRowClick = (universityName) => {
@@ -36,7 +38,8 @@ const UniversityTable = ({ provinceName }) => {
         <thead>
           <tr className="bg-bgTable-blue">
             <th className="table-text">序号</th>
-            <th className="table-text">本科院校名称</th>
+            {/* 本科/专科院校名称 */}
+            <th className="table-text">{level === '本科' ? '本科院校名称' : '专科院校名称'}</th> 
             <th className="table-text">类型</th>
             <th className="table-text">办学层次</th>
             <th className="table-text">类别</th>

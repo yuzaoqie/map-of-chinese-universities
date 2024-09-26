@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react'; // 导入 useState 和 useEffect
+import axios from 'axios'; // 导入 axios
 import ReactECharts from 'echarts-for-react';
 import * as echarts from 'echarts/core';
 import { china } from '../../assets/map/china';  // 导入中国地图
@@ -7,11 +8,32 @@ import bgImage from '../../assets/images/bg01.png'; // 更新路径
 import headerImage from '../../assets/images/header.png'; // 更新路径
 import TitleHeader from '../../components/TitleHeader';
 import BackgroundWrapper from '../../components/BackgroundWrapper';
+import { generateChinaMapOption } from '../../config/chinaMapConfig'; // 导入中国地图配置
+import Top10ProvincesChart from '../../components/Top10ProvincesChart'; // 导入 Top10ProvincesChart 组件
 
 // 注册中国地图
 echarts.registerMap('china', china, {});
 
 const ChinaMap = () => {
+
+  const [universityData, setUniversityData] = useState({});
+
+  // 获取大学数量的 API 数据
+  useEffect(() => {
+    axios.get('http://localhost:8080/api/universityCount')
+      .then(response => {
+        const data = response.data;
+        // 将数据转换为 { 省份名称: 大学数量 } 格式
+        const formattedData = data.reduce((acc, item) => {
+          acc[item.province_name] = item.university_count;
+          return acc;
+        }, {});
+        setUniversityData(formattedData); // 存储到 state 中
+      })
+      .catch(error => {
+        console.error("Error fetching university data:", error);
+      });
+  }, []);
 
   const onChartClick = (params) => {
     const provinceName = params.name;  // 获取点击的省份名称
@@ -22,26 +44,8 @@ const ChinaMap = () => {
     window.open(url, '_blank');
   };
 
-  const chinaMapOption = {
-    series: [{
-      type: 'map',
-      map: 'china',
-      label: {
-        show: true,  // 显示省份名称
-        color: '#FFFFFF',  // 设置文字颜色
-        fontSize: 14,   // 设置文字大小
-      },
-      itemStyle: {
-        normal: {
-          areaColor: '#00467f',  // 设置省份区域的默认颜色
-          borderColor: '#FFFFFF',   // 设置省份边界的颜色
-        },
-        emphasis: {
-          areaColor: '#01beff',  // 设置鼠标悬浮时区域的颜色
-        },
-      },
-    }],
-  };
+  // 动态生成地图配置
+  const chinaMapOption = generateChinaMapOption(universityData);
 
   return (
     <BackgroundWrapper bgImage={bgImage}>
@@ -54,6 +58,8 @@ const ChinaMap = () => {
         option={chinaMapOption}
         onEvents={{ click: onChartClick }}  // 绑定点击事件
       />
+
+
     </BackgroundWrapper>
   );
 };

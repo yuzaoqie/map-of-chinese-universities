@@ -55,11 +55,26 @@ const UniversityDetail = ({ universityName }) => {
             {/* 大学具体信息:右侧面板 */}
             <Panel panelImage={panelImage} className="w-1/2 ml-2">
                 <InfoItem h3Text="学校名称：" pText={university.name} />
-                <InfoItem h3Text="校训：" pText={university.motto} />
-                <InfoItem h3Text="学校发展历史：" pText={university.history} />
+                <InfoItem h3Text="办学层次：" pText={university.type} />
+                <InfoItem h3Text="公办/民办：" pText={university.public_private} />
+                <InfoItem h3Text="学科类别：" pText={university.discipline_category} />
                 <InfoItem h3Text="校区地址：" pText={university.address} />
+                <InfoItem h3Text="校训：" pText={university.motto} />
+                <InfoItem h3Text="师资力量：" pText={university.faculty_strength} />
+                <InfoItem h3Text="科研实力：" pText={university.research_strength} />
+                <InfoItem h3Text="硕士点、博士生点：" pText={university.graduate_points} />
+                <InfoItem h3Text="知名校友：" pText={university.notable_alumni} />
+                <InfoItem h3Text="校园活动与文化：" pText={university.campus_activities} />
+                <InfoItem h3Text="学校发展历史：" pText={university.history} />
+                <InfoItem h3Text="学校描述：" pText={university.description} />
+                <InfoItem h3Text="联系电话：" pText={university.contact_phone} />
+                <InfoItem h3Text="联系邮箱：" pText={university.contact_email} />
                 <InfoItem h3Text="官网：" pText={<a href={university.website} target="_blank" rel="noopener noreferrer">{university.website}</a>} />
                 <InfoItem h3Text="招生办：" pText={<a href={university.enrollment_website} target="_blank" rel="noopener noreferrer">{university.enrollment_website}</a>} />
+                {/* <InfoItem h3Text="软科：" pText={<a href={university.website} target="_blank" rel="noopener noreferrer">{university.website}</a>} />
+                <InfoItem h3Text="大学生活质量：" pText={<a href={university.website} target="_blank" rel="noopener noreferrer">{university.website}</a>} />
+                <InfoItem h3Text="框框大学：" pText={<a href={university.website} target="_blank" rel="noopener noreferrer">{university.website}</a>} />
+                <InfoItem h3Text="阳光高考：" pText={<a href={university.website} target="_blank" rel="noopener noreferrer">{university.website}</a>} /> */}
             </Panel>
         </div>
     );

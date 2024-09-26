@@ -14,7 +14,7 @@ import Panel from "../../components/Panel"; // 右侧数据面板组件
 import MapPanel from "../../components/MapPanel"; // 左侧地图面板组件
 import NotFound from "../NotFound"; // 404 页面
 import { useParams } from 'react-router-dom'; // 确保导入 useParams
-import JuniorCollegeTable from "../../components/JuniorCollegeTable"; // 专科院校表格
+import { provinceMapOption } from '../../config/provinceMapConfig'; // 导入省份地图配置
 
 const ProvinceMap = () => {
   const { name: provinceName } = useParams();  // 从路由参数中获取省份名称
@@ -32,27 +32,6 @@ const ProvinceMap = () => {
   // 注册省份地图
   echarts.registerMap(provinceName, provinceMap, {});
 
-  const provinceMapOption = {
-    series: [{
-      type: 'map',
-      map: provinceName,
-      label: {
-        show: true,  // 显示地区名称
-        color: '#FFFFFF',  // 设置文字颜色
-        fontSize: 12,   // 设置文字大小
-      },
-      itemStyle: {
-        normal: {
-          areaColor: '#00467f',  // 设置区域的默认颜色
-          borderColor: '#FFFFFF',   // 设置边界的颜色
-        },
-        emphasis: {
-          areaColor: '#01beff',  // 设置鼠标悬浮时区域的颜色
-        },
-      },
-    }],
-  };
-
   return (
     <BackgroundWrapper bgImage={bgImage}>
       {/* 标题居中 */}
@@ -64,7 +43,7 @@ const ProvinceMap = () => {
         {/* 左侧数据展示*/}
         <MapPanel
           panelImage={panelImage}
-          provinceMapOption={provinceMapOption}
+          provinceMapOption={provinceMapOption(provinceName)}
           provinceName={provinceName}
         />
         
@@ -73,12 +52,12 @@ const ProvinceMap = () => {
           {/* 本科院校 */}
           <Panel panelImage={panelImage} className="flex-1">
             {/* TODO 数据修改 */}
-            <UniversityTable provinceName={provinceName}/>
+            <UniversityTable provinceName={provinceName} level="本科" />
           </Panel>
           {/* 专科院校 */}
           <Panel panelImage={panelImage} className="mt-4 flex-1">
             {/* TODO 数据修改 */}
-            <JuniorCollegeTable provinceName={provinceName}/>
+            <UniversityTable provinceName={provinceName} level="专科" />
           </Panel>
         </div>
       </div>
